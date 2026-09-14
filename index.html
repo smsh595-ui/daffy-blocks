@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daffy Blocks 3D</title>
+    <!-- Futuristic Arcade Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Rajdhani:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="arcade-wrapper">
+      <!-- Super Dynamic Brand Header -->
+      <div class="brand-container">
+        <div class="glow-orb"></div>
+        <h1 class="glitch-title" data-text="DAFFY BLOCKS 3D">
+          <span class="word-daffy">DAFFY</span>
+          <span class="word-blocks">BLOCKS</span>
+          <span class="tag-3d">3D</span>
+        </h1>
+        <div class="subtitle-badge">
+          <span class="pulse-dot"></span> ARCADE CYBERZONE
+          <span class="pulse-dot"></span>
+        </div>
+      </div>
+
+      <!-- HUD with Level Counter -->
+      <div class="hud">
+        <div class="hud-card">
+          <span class="hud-label">LEVEL</span>
+          <div id="level" class="hud-value level-value">1</div>
+        </div>
+        <div class="hud-card">
+          <span class="hud-label">SCORE</span>
+          <div id="score" class="hud-value">0</div>
+        </div>
+        <div class="hud-card">
+          <span class="hud-label">LINES</span>
+          <div id="lines" class="hud-value">0</div>
+        </div>
+      </div>
+
+      <!-- 3D Arcade Stage with Level Up Banner -->
+      <div class="board-stage">
+        <div id="level-banner" class="level-banner">LEVEL UP!</div>
+        <canvas id="tetris" width="280" height="560"></canvas>
+      </div>
+
+      <!-- Screen Controls -->
+      <div class="controls-panel">
+        <button id="btn-left" class="game-btn">◀</button>
+        <button id="btn-rotate" class="game-btn btn-action">🔄</button>
+        <button id="btn-right" class="game-btn">▶</button>
+        <button id="btn-drop" class="game-btn btn-action">⚡</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

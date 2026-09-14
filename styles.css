@@ -1,0 +1,260 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+body {
+  background: radial-gradient(circle at 50% 20%, #161b2e 0%, #05070c 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  overflow: hidden;
+}
+
+.arcade-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ================= DYNAMIC 3D BRANDING ================= */
+.brand-container {
+  position: relative;
+  text-align: center;
+  padding: 4px 0;
+}
+
+.glow-orb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 40px;
+  background: radial-gradient(
+    ellipse,
+    rgba(0, 229, 255, 0.35) 0%,
+    rgba(255, 122, 0, 0.25) 50%,
+    transparent 80%
+  );
+  filter: blur(15px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.glitch-title {
+  position: relative;
+  z-index: 1;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* Metallic Chrome 'DAFFY' */
+.word-daffy {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #d4e0ff 45%,
+    #7a8fa6 55%,
+    #ffffff 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.6));
+}
+
+/* Electric Orange 'BLOCKS' */
+.word-blocks {
+  background: linear-gradient(
+    180deg,
+    #fff3e0 0%,
+    #ff9100 45%,
+    #d84315 55%,
+    #ffab40 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 12px rgba(255, 122, 0, 0.7));
+}
+
+/* 3D Cyan Capsule Tag */
+.tag-3d {
+  font-size: 11px;
+  font-weight: 900;
+  padding: 2px 7px;
+  background: linear-gradient(135deg, #00e5ff 0%, #007799 100%);
+  color: #05070c;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  box-shadow: 0 0 12px #00e5ff, inset 0 1px 1px #fff;
+  transform: skewX(-10deg);
+}
+
+/* Futuristic Badge Line */
+.subtitle-badge {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #8da2c0;
+  margin-top: 3px;
+  font-weight: 700;
+}
+
+.pulse-dot {
+  width: 5px;
+  height: 5px;
+  background-color: #00e5ff;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #00e5ff;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+
+/* ================= HUD ================= */
+.hud {
+  display: flex;
+  justify-content: space-between;
+  width: 290px;
+  gap: 6px;
+}
+
+.hud-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 6px 12px;
+  border-radius: 8px;
+  text-align: center;
+  flex: 1;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+.hud-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #8da2c0;
+}
+
+.hud-value {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: #00e5ff;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
+}
+
+.level-value {
+  color: #ffd600;
+  text-shadow: 0 0 10px rgba(255, 214, 0, 0.7);
+}
+
+/* ================= 3D BOARD ================= */
+.board-stage {
+  position: relative;
+  perspective: 900px;
+  perspective-origin: center top;
+}
+
+#tetris {
+  background: linear-gradient(180deg, #090b12 0%, #030407 100%);
+  border-radius: 12px;
+  border: 2px solid #2f384d;
+  transform: rotateX(7deg);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.95), 0 0 30px rgba(0, 229, 255, 0.15),
+    inset 0 0 25px rgba(0, 0, 0, 0.9);
+  display: block;
+}
+
+.level-banner {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: rgba(255, 122, 0, 0.95);
+  font-family: 'Orbitron', sans-serif;
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  box-shadow: 0 0 25px #ff7a00;
+  pointer-events: none;
+  z-index: 10;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    opacity 0.3s;
+  opacity: 0;
+}
+
+.level-banner.show {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+/* ================= CONTROLS ================= */
+.controls-panel {
+  display: flex;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.game-btn {
+  width: 60px;
+  height: 50px;
+  background: linear-gradient(180deg, #272f42 0%, #151924 100%);
+  border: 1px solid #3d4a66;
+  color: #fff;
+  font-size: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #0b0d13;
+  transition: all 0.08s ease;
+}
+
+.game-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 #0b0d13;
+  background: #1b202d;
+}
+
+.btn-action {
+  background: linear-gradient(180deg, #ff8c00 0%, #d65500 100%);
+  border-color: #ffa433;
+  box-shadow: 0 5px 0 #803300;
+}
+
+.btn-action:active {
+  background: #b84900;
+  box-shadow: 0 1px 0 #803300;
+}
