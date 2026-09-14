@@ -3,6 +3,10 @@
     "start": "servor --reload"
   },
   "dependencies": {
+    "@capacitor-community/admob": "^8.1.0",
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/cli": "^8.5.2",
+    "@capacitor/core": "^8.5.2",
     "servor": "^4.0.2"
   }
 }
