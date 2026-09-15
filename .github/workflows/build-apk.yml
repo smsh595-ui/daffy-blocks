@@ -34,6 +34,49 @@ jobs:
           cp -r index.html styles.css script.js www/ 2>/dev/null || true
           npx cap sync android
 
+      - name: Apply Custom Logo and App Name
+        run: |
+          python3 -m pip install pillow
+          python3 -c "
+          import os, re
+          from PIL import Image
+
+          candidates = ['icon.png', 'Icon.png', 'logo.png', 'Logo.png', 'assets/icon.png', 'assets/logo.png']
+          icon_path = next((p for p in candidates if os.path.exists(p)), None)
+
+          if icon_path:
+              print(f'Applying logo from: {icon_path}')
+              img = Image.open(icon_path).convert('RGBA')
+              sizes = {
+                  'mipmap-mdpi': (48, 108),
+                  'mipmap-hdpi': (72, 162),
+                  'mipmap-xhdpi': (96, 216),
+                  'mipmap-xxhdpi': (144, 324),
+                  'mipmap-xxxhdpi': (192, 432)
+              }
+              for folder, (base_s, fg_s) in sizes.items():
+                  target_dir = os.path.join('android', 'app', 'src', 'main', 'res', folder)
+                  os.makedirs(target_dir, exist_ok=True)
+                  base_img = img.resize((base_s, base_s), Image.Resampling.LANCZOS)
+                  base_img.save(os.path.join(target_dir, 'ic_launcher.png'))
+                  base_img.save(os.path.join(target_dir, 'ic_launcher_round.png'))
+                  fg_img = img.resize((fg_s, fg_s), Image.Resampling.LANCZOS)
+                  fg_img.save(os.path.join(target_dir, 'ic_launcher_foreground.png'))
+              print('Logo updated successfully.')
+          else:
+              print('No icon file found.')
+
+          strings_path = os.path.join('android', 'app', 'src', 'main', 'res', 'values', 'strings.xml')
+          if os.path.exists(strings_path):
+              with open(strings_path, 'r', encoding='utf-8') as f:
+                  xml_content = f.read()
+              xml_content = re.sub(r'<string name=\"app_name\">.*?</string>', '<string name=\"app_name\">Daffy Arcade Game</string>', xml_content)
+              xml_content = re.sub(r'<string name=\"title_activity_main\">.*?</string>', '<string name=\"title_activity_main\">Daffy Arcade Game</string>', xml_content)
+              with open(strings_path, 'w', encoding='utf-8') as f:
+                  f.write(xml_content)
+              print('App name set to Daffy Arcade Game.')
+          "
+
       - name: Build Debug APK
         run: |
           cd android
