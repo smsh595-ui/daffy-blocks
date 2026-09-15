@@ -25,6 +25,11 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
       - name: Install Dependencies
         run: npm install
 
@@ -34,47 +39,71 @@ jobs:
           cp -r index.html styles.css script.js www/ 2>/dev/null || true
           npx cap sync android
 
-      - name: Apply Custom Logo and App Name
+      - name: Force Custom Logo and App Name
         run: |
           python3 -m pip install pillow
           python3 -c "
-          import os, re
+          import os, re, shutil
           from PIL import Image
 
-          candidates = ['icon.png', 'Icon.png', 'logo.png', 'Logo.png', 'assets/icon.png', 'assets/logo.png']
+          # 1. Search for uploaded image
+          candidates = [
+              'icon.png', 'Icon.png', 'logo.png', 'Logo.png',
+              'assets/icon.png', 'assets/logo.png', 'www/icon.png'
+          ]
           icon_path = next((p for p in candidates if os.path.exists(p)), None)
+          if not icon_path:
+              for f in os.listdir('.'):
+                  if f.lower().endswith(('.png', '.jpg', '.jpeg', '.webp')) and not f.startswith('.'):
+                      icon_path = f
+                      break
 
-          if icon_path:
-              print(f'Applying logo from: {icon_path}')
+          print(f'Selected logo image: {icon_path}')
+
+          res_path = os.path.join('android', 'app', 'src', 'main', 'res')
+
+          # 2. Remove default Capacitor vector files so Android uses our PNG
+          anydpi_dir = os.path.join(res_path, 'mipmap-anydpi-v26')
+          if os.path.exists(anydpi_dir):
+              shutil.rmtree(anydpi_dir)
+              print('Removed mipmap-anydpi-v26 (Purana vector icon khatam).')
+
+          for d in ['drawable', 'drawable-v24']:
+              vec_file = os.path.join(res_path, d, 'ic_launcher_foreground.xml')
+              if os.path.exists(vec_file):
+                  os.remove(vec_file)
+                  print(f'Removed {vec_file}')
+
+          # 3. Generate PNG icons for all densities
+          if icon_path and os.path.exists(icon_path):
               img = Image.open(icon_path).convert('RGBA')
               sizes = {
-                  'mipmap-mdpi': (48, 108),
-                  'mipmap-hdpi': (72, 162),
-                  'mipmap-xhdpi': (96, 216),
-                  'mipmap-xxhdpi': (144, 324),
-                  'mipmap-xxxhdpi': (192, 432)
+                  'mipmap-mdpi': 48,
+                  'mipmap-hdpi': 72,
+                  'mipmap-xhdpi': 96,
+                  'mipmap-xxhdpi': 144,
+                  'mipmap-xxxhdpi': 192
               }
-              for folder, (base_s, fg_s) in sizes.items():
-                  target_dir = os.path.join('android', 'app', 'src', 'main', 'res', folder)
+              for folder, size in sizes.items():
+                  target_dir = os.path.join(res_path, folder)
                   os.makedirs(target_dir, exist_ok=True)
-                  base_img = img.resize((base_s, base_s), Image.Resampling.LANCZOS)
-                  base_img.save(os.path.join(target_dir, 'ic_launcher.png'))
-                  base_img.save(os.path.join(target_dir, 'ic_launcher_round.png'))
-                  fg_img = img.resize((fg_s, fg_s), Image.Resampling.LANCZOS)
-                  fg_img.save(os.path.join(target_dir, 'ic_launcher_foreground.png'))
-              print('Logo updated successfully.')
+                  resized = img.resize((size, size), Image.Resampling.LANCZOS)
+                  resized.save(os.path.join(target_dir, 'ic_launcher.png'))
+                  resized.save(os.path.join(target_dir, 'ic_launcher_round.png'))
+              print('KAMYABI: Naya logo har screen size par save ho gaya!')
           else:
-              print('No icon file found.')
+              print('Error: Logo image nahi mili!')
 
-          strings_path = os.path.join('android', 'app', 'src', 'main', 'res', 'values', 'strings.xml')
+          # 4. Set App Display Name
+          strings_path = os.path.join(res_path, 'values', 'strings.xml')
           if os.path.exists(strings_path):
               with open(strings_path, 'r', encoding='utf-8') as f:
-                  xml_content = f.read()
-              xml_content = re.sub(r'<string name=\"app_name\">.*?</string>', '<string name=\"app_name\">Daffy Arcade Game</string>', xml_content)
-              xml_content = re.sub(r'<string name=\"title_activity_main\">.*?</string>', '<string name=\"title_activity_main\">Daffy Arcade Game</string>', xml_content)
+                  xml = f.read()
+              xml = re.sub(r'<string name=\"app_name\">.*?</string>', '<string name=\"app_name\">Daffy Arcade Game</string>', xml)
+              xml = re.sub(r'<string name=\"title_activity_main\">.*?</string>', '<string name=\"title_activity_main\">Daffy Arcade Game</string>', xml)
               with open(strings_path, 'w', encoding='utf-8') as f:
-                  f.write(xml_content)
-              print('App name set to Daffy Arcade Game.')
+                  f.write(xml)
+              print('KAMYABI: App name Daffy Arcade Game update ho gaya.')
           "
 
       - name: Build Debug APK
