@@ -4,9 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Web2App Studio | Turn Website into Android Mobile App | Daffy International</title>
-  <link rel="icon" type="image/jpeg" href="icon.png.jpg">
-  <link rel="icon" type="image/png" href="icon.png">
-  <link rel="apple-touch-icon" href="icon.png.jpg">
+  <meta name="description" content="Convert your website, web app, or HTML5 game into a high-performance Android mobile application with custom branding, AdMob monetization, and Play Store readiness.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><circle cx='20' cy='20' r='18' fill='%23090d16'/><path d='M25 10L33 20L25 30M19 13L27 20L19 27' stroke='%2300d2ff' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/><path d='M11 17L8 20L11 23M16 17L19 20L16 23' stroke='white' stroke-width='2'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -21,8 +20,21 @@
     
     header { padding: 16px 0; border-bottom: 1px solid var(--border); background: rgba(9,13,22,0.92); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
     .nav { display: flex; justify-content: space-between; align-items: center; }
-    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; font-size: 19px; font-weight: 800; }
-    .logo img { width: 38px; height: 38px; border-radius: 8px; border: 1px solid rgba(0,210,255,0.4); object-fit: cover; }
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; font-size: 19px; font-weight: 800; }
+    
+    .logo-badge-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: #000;
+      border: 1px solid rgba(0, 210, 255, 0.4);
+      box-shadow: 0 0 15px rgba(0, 210, 255, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
     .logo span { background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .btn-wa { background: #25d366; color: #fff; padding: 8px 16px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; }
     .btn-fiverr { background: #1dbf73; color: #fff; padding: 8px 16px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 13px; }
@@ -90,7 +102,19 @@
   <header>
     <div class="container nav">
       <a href="#" class="logo">
-        <img src="icon.png.jpg" onerror="this.onerror=null; this.src='icon.png';" alt="Logo">
+        <div class="logo-badge-icon">
+          <svg width="26" height="26" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="8" cy="14" r="2.5" fill="#00d2ff"/>
+            <circle cx="8" cy="26" r="2.5" fill="#00d2ff"/>
+            <circle cx="12" cy="20" r="3" fill="#3a7bd5"/>
+            <path d="M4 14H10M4 26H10M4 20H12" stroke="#00d2ff" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M25 8L35 20L25 32" stroke="#3a7bd5" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M19 11L28 20L19 29" stroke="#00d2ff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M13 17L10 20L13 23" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18 17L21 20L18 23" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 16L14 24" stroke="#00d2ff" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
         <div><span>WEB2APP</span> STUDIO</div>
       </a>
       <div class="nav-actions">
@@ -271,7 +295,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <div class="container">
       <p style="margin-bottom:6px;">Support: <a href="mailto:contact@daffyinternational.com">contact@daffyinternational.com</a> | WhatsApp: <a href="https://wa.me/923112144284" target="_blank">+92 311 2144284</a></p>
