@@ -4,638 +4,280 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Web2App Studio | Turn Website into Android Mobile App | Daffy International</title>
-  <meta name="description" content="Convert your website, web app, or HTML5 game into a high-performance Android mobile application with custom branding, AdMob monetization, and Play Store readiness.">
   <link rel="icon" type="image/jpeg" href="icon.png.jpg">
   <link rel="icon" type="image/png" href="icon.png">
   <link rel="apple-touch-icon" href="icon.png.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #090d16;
-      --card-bg: #111827;
-      --card-border: #1f293d;
-      --primary: #00d2ff;
-      --primary-glow: rgba(0, 210, 255, 0.25);
-      --secondary: #3a7bd5;
-      --fiverr-green: #1dbf73;
-      --whatsapp-green: #25d366;
-      --text: #f3f4f6;
-      --text-muted: #9ca3af;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    .container {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* Header */
-    header {
-      padding: 16px 0;
-      border-bottom: 1px solid var(--card-border);
-      background: rgba(9, 13, 22, 0.92);
-      backdrop-filter: blur(12px);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .nav-wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-
-    .logo-img {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      object-fit: cover;
-      border: 1px solid rgba(0, 210, 255, 0.4);
-      box-shadow: 0 0 15px rgba(0, 210, 255, 0.25);
-    }
-
-    .logo-text {
-      font-size: 19px;
-      font-weight: 800;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .logo-text span {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .logo-badge {
-      font-size: 10px;
-      background: rgba(0, 210, 255, 0.1);
-      color: var(--primary);
-      border: 1px solid rgba(0, 210, 255, 0.3);
-      padding: 3px 8px;
-      border-radius: 20px;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--primary);
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .btn-whatsapp {
-      background: #25d366;
-      color: #fff;
-      padding: 9px 16px;
-      border-radius: 8px;
-      font-weight: 700;
-      text-decoration: none;
-      font-size: 13.5px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
-    }
-
-    .btn-whatsapp:hover {
-      background: #20ba5a;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
-    }
-
-    .btn-fiverr {
-      background: #1dbf73;
-      color: #fff;
-      padding: 9px 16px;
-      border-radius: 8px;
-      font-weight: 700;
-      text-decoration: none;
-      font-size: 13.5px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 14px rgba(29, 191, 115, 0.25);
-    }
-
-    .btn-fiverr:hover {
-      background: #19a463;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(29, 191, 115, 0.4);
-    }
-
-    .btn-email {
-      background: rgba(0, 210, 255, 0.1);
-      border: 1px solid rgba(0, 210, 255, 0.3);
-      color: var(--primary);
-      padding: 11px 22px;
-      border-radius: 8px;
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 14px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.3s ease;
-    }
-
-    .btn-email:hover {
-      background: rgba(0, 210, 255, 0.2);
-      transform: translateY(-2px);
-    }
-
-    .cta-btn-outline {
-      background: transparent;
-      border: 1px solid var(--card-border);
-      color: var(--text);
-      padding: 11px 22px;
-      border-radius: 8px;
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 14px;
-      transition: all 0.3s ease;
-      display: inline-block;
-    }
-
-    .cta-btn-outline:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-    }
-
-    /* Hero */
-    .hero {
-      padding: 85px 0 60px;
-      text-align: center;
-    }
-
-    .hero-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(0, 210, 255, 0.08);
-      border: 1px solid rgba(0, 210, 255, 0.2);
-      padding: 6px 18px;
-      border-radius: 50px;
-      font-size: 13px;
-      color: var(--primary);
-      margin-bottom: 22px;
-      font-weight: 600;
-    }
-
-    .hero h1 {
-      font-size: 46px;
-      font-weight: 800;
-      line-height: 1.2;
-      max-width: 860px;
-      margin: 0 auto 20px;
-      letter-spacing: -0.5px;
-    }
-
-    .hero h1 span {
-      background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 50%, #90e0ef 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-      font-size: 17px;
-      color: var(--text-muted);
-      max-width: 700px;
-      margin: 0 auto 34px;
-    }
-
-    .hero-actions {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .stats-bar {
-      display: flex;
-      justify-content: center;
-      gap: 45px;
-      margin: 50px 0 10px;
-      padding: 22px;
-      background: rgba(17, 24, 39, 0.5);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      flex-wrap: wrap;
-    }
-
-    .stat-number {
-      font-size: 26px;
-      font-weight: 800;
-      color: var(--primary);
-    }
-
-    .stat-label {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    section {
-      padding: 65px 0;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 45px;
-    }
-
-    .section-title h2 {
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .section-title p {
-      color: var(--text-muted);
-      font-size: 15.5px;
-      max-width: 580px;
-      margin: 0 auto;
-    }
-
-    /* Portfolio Cards Grid */
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 24px;
-    }
-
-    .portfolio-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .portfolio-card:hover {
-      border-color: var(--primary);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-    }
-
-    .portfolio-preview {
-      height: 150px;
-      background: linear-gradient(135deg, rgba(0, 210, 255, 0.08), rgba(58, 123, 213, 0.12));
-      border-bottom: 1px solid var(--card-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .preview-badge {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid var(--card-border);
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 11px;
-      color: var(--primary);
-      font-weight: 600;
-    }
-
-    .preview-icon {
-      font-size: 44px;
-    }
-
-    .portfolio-content {
-      padding: 22px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .portfolio-category {
-      font-size: 11px;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: var(--primary);
-      letter-spacing: 0.5px;
-      margin-bottom: 6px;
-    }
-
-    .portfolio-title {
-      font-size: 17.5px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .portfolio-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-      line-height: 1.5;
-    }
-
-    .portfolio-tags {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      margin-bottom: 16px;
-    }
-
-    .p-tag {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--card-border);
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 4px;
-      color: var(--text-muted);
-    }
-
-    .portfolio-link {
-      color: var(--primary);
-      font-size: 13px;
-      font-weight: 600;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* Features Grid */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
-    }
-
-    .feature-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      padding: 28px;
-      border-radius: 12px;
-      transition: all 0.3s ease;
-    }
-
-    .feature-card:hover {
-      border-color: var(--primary);
-      transform: translateY(-4px);
-    }
-
-    .feature-icon {
-      font-size: 28px;
-      margin-bottom: 14px;
-    }
-
-    .feature-card h3 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .feature-card p {
-      color: var(--text-muted);
-      font-size: 14px;
-    }
-
-    /* Pricing */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 28px;
-      max-width: 1040px;
-      margin: 0 auto;
-    }
-
-    .pricing-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 36px 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-    }
-
-    .pricing-card.featured {
-      border-color: var(--primary);
-      box-shadow: 0 0 30px rgba(0, 210, 255, 0.15);
-    }
-
-    .featured-tag {
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--primary);
-      color: #000;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 3px 12px;
-      border-radius: 20px;
-      text-transform: uppercase;
-    }
-
-    .plan-title {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .plan-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-      min-height: 40px;
-    }
-
-    .plan-price {
-      font-size: 38px;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 24px;
-    }
-
-    .plan-price span {
-      font-size: 14px;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    .plan-features {
-      list-style: none;
-      margin-bottom: 30px;
-      border-top: 1px solid var(--card-border);
-      padding-top: 20px;
-    }
-
-    .plan-features li {
-      font-size: 13.5px;
-      color: var(--text);
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .plan-features li::before {
-      content: "✔";
-      color: var(--primary);
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    /* 3-Column Contact Channels */
-    .contact-channels-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-top: 30px;
-    }
-
-    .contact-channel-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 30px 24px;
-      text-align: center;
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .contact-channel-card:hover {
-      border-color: var(--primary);
-      transform: translateY(-4px);
-    }
-
-    .channel-icon {
-      font-size: 36px;
-      margin-bottom: 14px;
-    }
-
-    .channel-title {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .channel-desc {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-      min-height: 40px;
-    }
-
-    .location-info {
-      text-align: center;
-      margin-top: 35px;
-      font-size: 13.5px;
-      color: var(--text-muted);
-    }
-
-    /* Floating WhatsApp Button */
-    .floating-whatsapp {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      background-color: #25d366;
-      color: #fff;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-      z-index: 999;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .floating-whatsapp:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
-    }
-
-    .floating-whatsapp svg {
-      width: 32px;
-      height: 32px;
-      fill: #fff;
-    }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--card-border);
-      padding: 40px 0;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 13px;
-    }
-
-    footer a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 32px; }
-      .hero p { font-size: 15px; }
-      .nav-links { display: none; }
-      .header-actions { gap: 6px; }
-      .btn-whatsapp span, .btn-fiverr span { display: none; }
-    }
+      --bg: #090d16; --card: #111827; --border: #1f293d;
+      --primary: #00d2ff; --secondary: #3a7bd5; --text: #f3f4f6; --muted: #9ca3af;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background: var(--bg); color: var(--text); line-height: 1.6; }
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+    
+    header { padding: 16px 0; border-bottom: 1px solid var(--border); background: rgba(9,13,22,0.92); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
+    .nav { display: flex; justify-content: space-between; align-items: center; }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; font-size: 19px; font-weight: 800; }
+    .logo img { width: 38px; height: 38px; border-radius: 8px; border: 1px solid rgba(0,210,255,0.4); object-fit: cover; }
+    .logo span { background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .btn-wa { background: #25d366; color: #fff; padding: 8px 16px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; }
+    .btn-fiverr { background: #1dbf73; color: #fff; padding: 8px 16px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 13px; }
+    .nav-actions { display: flex; gap: 8px; align-items: center; }
+
+    .hero { padding: 75px 0 50px; text-align: center; }
+    .pill { display: inline-block; background: rgba(0,210,255,0.08); border: 1px solid rgba(0,210,255,0.25); color: var(--primary); padding: 5px 15px; border-radius: 30px; font-size: 12.5px; font-weight: 600; margin-bottom: 18px; }
+    .hero h1 { font-size: 42px; font-weight: 800; line-height: 1.2; max-width: 820px; margin: 0 auto 18px; }
+    .hero h1 span { background: linear-gradient(135deg, #00d2ff, #3a7bd5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { font-size: 16.5px; color: var(--muted); max-width: 660px; margin: 0 auto 30px; }
+    .hero-btns { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+    .btn-lg-wa { background: #25d366; color: #fff; padding: 13px 26px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 15px; }
+    .btn-lg-fiverr { background: #1dbf73; color: #fff; padding: 13px 26px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 15px; }
+    .btn-email { background: rgba(0,210,255,0.1); border: 1px solid rgba(0,210,255,0.3); color: var(--primary); padding: 13px 24px; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 15px; }
+
+    .stats { display: flex; justify-content: center; gap: 40px; padding: 20px; background: rgba(17,24,39,0.5); border: 1px solid var(--border); border-radius: 12px; flex-wrap: wrap; margin-top: 20px; }
+    .stat-n { font-size: 24px; font-weight: 800; color: var(--primary); }
+    .stat-l { font-size: 12.5px; color: var(--muted); }
+
+    section { padding: 60px 0; }
+    .sec-head { text-align: center; margin-bottom: 40px; }
+    .sec-head h2 { font-size: 30px; font-weight: 700; margin-bottom: 8px; }
+    .sec-head p { color: var(--muted); font-size: 15px; }
+
+    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
+    .card-icon { font-size: 36px; margin-bottom: 12px; }
+    .badge { font-size: 10.5px; text-transform: uppercase; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+    .card h3 { font-size: 17.5px; margin-bottom: 8px; }
+    .card p { font-size: 13px; color: var(--muted); margin-bottom: 15px; }
+    .link-wa { color: #25d366; font-size: 13px; font-weight: 700; text-decoration: none; }
+    .link-fiverr { color: #1dbf73; font-size: 13px; font-weight: 700; text-decoration: none; }
+    .link-primary { color: var(--primary); font-size: 13px; font-weight: 700; text-decoration: none; }
+
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto; }
+    .price-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 32px 24px; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
+    .price-card.featured { border-color: var(--primary); box-shadow: 0 0 25px rgba(0,210,255,0.15); }
+    .popular { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary); color: #000; font-size: 10.5px; font-weight: 800; padding: 3px 12px; border-radius: 20px; }
+    .price { font-size: 36px; font-weight: 800; color: #fff; margin: 15px 0 20px; }
+    .price span { font-size: 13px; color: var(--muted); font-weight: normal; }
+    .features { list-style: none; margin-bottom: 25px; border-top: 1px solid var(--border); padding-top: 18px; font-size: 13px; }
+    .features li { margin-bottom: 10px; }
+    .features li::before { content: "✔ "; color: var(--primary); font-weight: 700; }
+
+    .contact-sec { background: rgba(17,24,39,0.4); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; text-align: center; }
+    .contact-box { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 26px; }
+
+    .float-wa { position: fixed; bottom: 22px; right: 22px; background: #25d366; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 18px rgba(37,211,102,0.45); z-index: 999; }
+    .float-wa svg { width: 30px; height: 30px; fill: #fff; }
+
+    footer { padding: 35px 0; text-align: center; color: var(--muted); font-size: 13px; }
+    footer a { color: var(--primary); text-decoration: none; }
+    @media(max-width: 768px) { .hero h1 { font-size: 30px; } .nav-actions { gap: 4px; } }
   </style>
 </head>
 <body>
 
   <!-- Floating WhatsApp Widget -->
-  <a href="
+  <a href="https://wa.me/923112144284?text=Hello%20Daffy%20App%20Studio%2C%20I%20want%20to%20convert%20my%20website%20to%20an%20Android%20app." target="_blank" class="float-wa" title="WhatsApp Chat">
+    <svg viewBox="0 0 32 32"><path d="M16 2a13.9 13.9 0 0 0-12 21L2 30l7.3-1.9A13.9 13.9 0 1 0 16 2zm0 25.5a11.5 11.5 0 0 1-5.9-1.6l-.4-.2-4.4 1.1 1.2-4.3-.3-.4A11.6 11.6 0 1 1 16 27.5zm6.4-8.7c-.3-.2-2-.9-2.3-1.1s-.5-.2-.7.2-1 1.1-1.2 1.3-.4.2-.7 0a9.2 9.2 0 0 1-2.7-1.7 10.2 10.2 0 0 1-1.9-2.3c-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.4.3-.6s0-.4-.1-.6-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.7 3.7 0 0 0-1.2 2.8 6.4 6.4 0 0 0 1.4 3.4 14.5 14.5 0 0 0 5.6 5c.8.3 1.4.5 1.9.7a4.6 4.6 0 0 0 2.1.1 3.4 3.4 0 0 0 2.2-1.6 2.8 2.8 0 0 0 .2-1.6c-.1-.1-.3-.2-.6-.4z"/></svg>
+  </a>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo">
+        <img src="icon.png.jpg" onerror="this.onerror=null; this.src='icon.png';" alt="Logo">
+        <div><span>WEB2APP</span> STUDIO</div>
+      </a>
+      <div class="nav-actions">
+        <a href="https://wa.me/923112144284?text=Hello%20Daffy%20App%20Studio%2C%20I%20need%20an%20app%20consultation." target="_blank" class="btn-wa">💬 WhatsApp</a>
+        <a href="https://www.fiverr.com/s/qbDr00V" target="_blank" class="btn-fiverr">Fiverr Gig ➔</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="pill">⚡ 24–48 Hour Fast Turnaround</div>
+      <h1>Turn Any Website or Web Game Into a <span>High-Performance Android App</span></h1>
+      <p>We transform your responsive websites, WordPress portals, Shopify stores, and HTML5 web games into native-grade Android APKs and Google Play Store-ready bundles.</p>
+      
+      <div class="hero-btns">
+        <a href="https://wa.me/923112144284?text=Hello%20Daffy%20App%20Studio%2C%20I%20am%20interested%20in%20converting%20my%20website%20to%20an%20Android%20app." target="_blank" class="btn-lg-wa">💬 Chat on WhatsApp</a>
+        <a href="https://www.fiverr.com/s/qbDr00V" target="_blank" class="btn-lg-fiverr">Order on Fiverr ➔</a>
+        <a href="mailto:contact@daffyinternational.com" class="btn-email">✉️ Email Studio</a>
+      </div>
+
+      <div class="stats">
+        <div><div class="stat-n">24 Hours</div><div class="stat-l">Fast Delivery</div></div>
+        <div><div class="stat-n">100%</div><div class="stat-l">Device Responsive</div></div>
+        <div><div class="stat-n">Play Store</div><div class="stat-l">Signed AAB Ready</div></div>
+        <div><div class="stat-n">AdMob</div><div class="stat-l">Monetization Ready</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section style="background: rgba(17,24,39,0.3);">
+    <div class="container">
+      <div class="sec-head">
+        <h2>Featured Web-to-App Transformations</h2>
+        <p>Explore real-world mobile apps converted from websites and web platforms.</p>
+      </div>
+
+      <div class="grid-4">
+        <div class="card">
+          <div>
+            <div class="card-icon">🎮</div>
+            <div class="badge">Gaming & Arcade</div>
+            <h3>Daffy Arcade Game</h3>
+            <p>60 FPS HTML5 Cyber Neon puzzle game converted into standalone Android APK with custom neon icons and AdMob integration.</p>
+          </div>
+          <a href="https://daffyinternational.com" target="_blank" class="link-primary">Agency Case Study ➔</a>
+        </div>
+
+        <div class="card">
+          <div>
+            <div class="card-icon">🛍️</div>
+            <div class="badge">E-Commerce</div>
+            <h3>QuickShop Retail App</h3>
+            <p>Shopify & WooCommerce web store converted into Android shopping app with pull-to-refresh and push notifications.</p>
+          </div>
+          <a href="https://wa.me/923112144284?text=Hello%20Daffy%20App%20Studio%2C%20I%20want%20to%20convert%20my%20store%20to%20an%20app." target="_blank" class="link-wa">WhatsApp Inquiry ➔</a>
+        </div>
+
+        <div class="card">
+          <div>
+            <div class="card-icon">📰</div>
+            <div class="badge">News & Media</div>
+            <h3>MetroNews Reader</h3>
+            <p>Editorial news and magazine portal converted into Android reader app with breaking news alerts and AdMob banner ads.</p>
+          </div>
+          <a href="https://www.fiverr.com/s/qbDr00V" target="_blank" class="link-fiverr">Order on Fiverr ➔</a>
+        </div>
+
+        <div class="card">
+          <div>
+            <div class="card-icon">🍕</div>
+            <div class="badge">Food & Restaurant</div>
+            <h3>UrbanBite Delivery App</h3>
+            <p>Online food ordering and table booking web app turned into branded Android application with location tracking.</p>
+          </div>
+          <a href="mailto:contact@daffyinternational.com?subject=Restaurant%20App" class="link-primary">Email Inquiry ➔</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section>
+    <div class="container">
+      <div class="sec-head">
+        <h2>Transparent Service Packages</h2>
+        <p>Choose your preferred package and payment channel.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div>
+            <h3>Starter Web-to-App</h3>
+            <p style="color:var(--muted); font-size:13px; margin: 5px 0;">For blogs, websites & games needing a direct APK.</p>
+            <div class="price">$150 <span>/ project</span></div>
+            <ul class="features">
+              <li>Direct Installable Android APK</li>
+              <li>Custom App Icon & Splash Screen</li>
+              <li>Pull-to-Refresh & Touch Gestures</li>
+              <li>48-Hour Fast Delivery</li>
+            </ul>
+          </div>
+          <a href="https://www.fiverr.com/s/qbDr00V" target="_blank" class="btn-fiverr" style="text-align:center; display:block;">Order on Fiverr ($150)</a>
+        </div>
+
+        <div class="price-card featured">
+          <div class="popular">Most Popular</div>
+          <div>
+            <h3>Pro Launchpad</h3>
+            <p style="color:var(--muted); font-size:13px; margin: 5px 0;">Complete mobile app with AdMob & Play Store AAB.</p>
+            <div class="price">$350 <span>/ project</span></div>
+            <ul class="features">
+              <li>Everything in Starter</li>
+              <li>Signed AAB Bundle (Play Store Ready)</li>
+              <li>Google AdMob Integration (Banner & Interstitial)</li>
+              <li>Push Notification Architecture</li>
+              <li>Priority 24–48 Hour Turnaround</li>
+            </ul>
+          </div>
+          <a href="https://wa.me/923112144284?text=Hello%20Daffy%20App%20Studio%2C%20I%20want%20the%20Pro%20Package." target="_blank" class="btn-wa" style="text-align:center; display:block; justify-content:center;">Order on WhatsApp ($350)</a>
+        </div>
+
+        <div class="price-card">
+          <div>
+            <h3>Enterprise Suite</h3>
+            <p style="color:var(--muted); font-size:13px; margin: 5px 0;">Custom website build plus native Android app.</p>
+            <div class="price">$750 <span>/ project</span></div>
+            <ul class="features">
+              <li>Complete Responsive Business Website</li>
+              <li>Synchronized Branded Android App</li>
+              <li>Full Monetization & Analytics Pipeline</li>
+              <li>Play Store Console Listing Guide</li>
+              <li>30 Days Priority Technical Support</li>
+            </ul>
+          </div>
+          <a href="mailto:contact@daffyinternational.com?subject=Enterprise%20App" class="btn-email" style="text-align:center; display:block;">Email for Scope ($750)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact-sec">
+    <div class="container">
+      <div class="sec-head">
+        <h2>Start Your Project Today</h2>
+        <p>Direct chat, official email, or Fiverr escrow order.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-box">
+          <div style="font-size:32px; margin-bottom:8px;">💬</div>
+          <h3>Direct WhatsApp</h3>
+          <p style="color:var(--muted); font-size:13px; margin:6px 0 15px;">Fastest replies for scoping & questions.</p>
+          <a href="https://wa.me/923112144284?text=Hello%20Daffy%20App%20Studio" target="_blank" class="btn-wa" style="display:inline-block;">+92 311 2144284</a>
+        </div>
+
+        <div class="contact-box">
+          <div style="font-size:32px; margin-bottom:8px;">✉️</div>
+          <h3>Corporate Email</h3>
+          <p style="color:var(--muted); font-size:13px; margin:6px 0 15px;">Submit detailed project proposals.</p>
+          <a href="mailto:contact@daffyinternational.com" class="btn-email" style="display:inline-block; font-size:13px; padding:9px 16px;">contact@daffyinternational.com</a>
+        </div>
+
+        <div class="contact-box">
+          <div style="font-size:32px; margin-bottom:8px;">🛡️</div>
+          <h3>Fiverr Marketplace</h3>
+          <p style="color:var(--muted); font-size:13px; margin:6px 0 15px;">Official escrow buyer protection.</p>
+          <a href="https://www.fiverr.com/s/qbDr00V" target="_blank" class="btn-fiverr" style="display:inline-block;">View on Fiverr</a>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:30px; font-size:13.5px; color:var(--muted);">
+        📍 Headquartered in Karachi, Sindh, Pakistan | A Division of <a href="https://daffyinternational.com" target="_blank" style="color:var(--primary); font-weight:700;">Daffy International</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p style="margin-bottom:6px;">Support: <a href="mailto:contact@daffyinternational.com">contact@daffyinternational.com</a> | WhatsApp: <a href="https://wa.me/923112144284" target="_blank">+92 311 2144284</a></p>
+      <p>© 2026 Web2App Studio — Powered by <a href="https://daffyinternational.com" target="_blank">Daffy International</a>.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
